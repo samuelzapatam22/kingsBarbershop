@@ -8,6 +8,6 @@ package kingsbarbershop;
  *
  * @author SamuelZapata
  */
-public class Servicios {
+public class Factura {
     
 }

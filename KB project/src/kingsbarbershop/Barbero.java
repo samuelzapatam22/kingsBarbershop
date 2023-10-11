@@ -3,7 +3,7 @@ package kingsbarbershop;
 
 import javax.swing.JOptionPane;
 
-public class Barbero extends Persona implements Citas {
+public class Barbero extends Persona  {
     //Atributos
     private String horario;
     // Constructores
@@ -26,16 +26,8 @@ public class Barbero extends Persona implements Citas {
     public void verHorario(Barbero obj){
         JOptionPane.showInputDialog(null, "HORARIO\n"+obj.getHorario());
     }
-//Metodos abstractos
-    @Override
-    public void agendarCita() {
+    public void crearBarbero(){
+        
     }
 
-    @Override
-    public void eliminarCita() {
-    }
-
-    @Override
-    public void visualizarCita() {
-    }
 }

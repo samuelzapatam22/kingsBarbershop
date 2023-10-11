@@ -1,6 +1,6 @@
 package kingsbarbershop;
 
-public class Operador extends Persona implements Citas {
+public class Operador extends Persona  {
 //Constructores
     
     public Operador(String nombre, String apellido, long id, long telefono) {
@@ -9,17 +9,15 @@ public class Operador extends Persona implements Citas {
 
     public Operador() {
     }
-// Metodos Abstractos
-    @Override
-    public void agendarCita() {
+    public void crearOperador(){
+        
+    }
+    public void editarOperador(){
+        
+    }
+    public void borrarOperador(){
+        
     }
 
-    @Override
-    public void eliminarCita() {
-    }
-
-    @Override
-    public void visualizarCita() {
-    }
 
 }

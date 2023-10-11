@@ -1,7 +1,7 @@
 
 package kingsbarbershop;
 
-public class Administrador extends Persona implements Citas {
+public class Administrador extends Persona  {
 //Constructores
     
     public Administrador(String nombre, String apellido, long id, long telefono) {
@@ -10,18 +10,6 @@ public class Administrador extends Persona implements Citas {
 
     public Administrador() {
     }
-//Metodos Abstractos
-    
-    @Override
-    public void agendarCita() {
-    }
 
-    @Override
-    public void eliminarCita() {
-    }
-
-    @Override
-    public void visualizarCita() {
-    }
     
 }

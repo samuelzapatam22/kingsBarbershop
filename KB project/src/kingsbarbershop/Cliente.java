@@ -1,7 +1,7 @@
 
 package kingsbarbershop;
 
-public class Cliente extends Persona implements Citas{
+public class Cliente extends Persona {
 //Constructores
     public Cliente(String nombre, String apellido, long id, long telefono) {
         super(nombre, apellido, id, telefono);
@@ -9,18 +9,15 @@ public class Cliente extends Persona implements Citas{
 
     public Cliente() {
     }
-    
-//Metodos Abstractos
-    @Override
-    public void agendarCita() {
+    public void crearCliente(){
+        
+    }
+    public void editarCliente(){
+        
+    }
+    public void borrarCliente(){
+        
     }
 
-    @Override
-    public void eliminarCita() {
-    }
-
-    @Override
-    public void visualizarCita() {
-    }
     
 }

@@ -2,11 +2,20 @@
 package kingsbarbershop;
 
 
-public interface  Citas {
-    //Metodos Abstractos
-    public void agendarCita();
-    public void eliminarCita();
-    public void visualizarCita();
+public class Citas {
+
+    public Citas() {
+    }
+    public void crearCita(){
+        
+    }
+    public void editarCita(){
+        
+    }
+    public void borrarCita(){
+        
+    }
+    
         
     
     
