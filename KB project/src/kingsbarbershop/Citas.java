@@ -1,8 +1,12 @@
 
 package kingsbarbershop;
 
+import java.io.Serializable;
 
-public class Citas {
+
+public class Citas implements Serializable {
+    
+        private static final long serialVersionUID = 1L; //version de serializacion 
 
     public Citas() {
     }

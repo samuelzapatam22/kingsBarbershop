@@ -1,15 +1,27 @@
-
 package kingsbarbershop;
 
-public class Administrador extends Persona  {
+import java.io.Serializable;
+
+public class Administrador extends Persona implements Serializable {
+
+    private static final long serialVersionUID = 1L; //version de serializacion 
+
 //Constructores
+
     
-    public Administrador(String nombre, String apellido, long id, long telefono) {
-        super(nombre, apellido, id, telefono);
-    }
+
+    
+    
 
     public Administrador() {
     }
-
+    public void crearAdmin(){
+    GestionDatos crud = new GestionDatos();
+    Administrador user = new Administrador();
+    user.setNombre("codigoc13");
+    user.setId(1013457214);
+    user.setTelefono("3128906454");
+    crud.ingresarPersona(user);
     
+    }
 }

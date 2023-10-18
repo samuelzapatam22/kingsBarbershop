@@ -35,7 +35,7 @@ public class Vista extends Persona {
 
     public void iniciarSesion() {
 
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "\n\n1. Administrador\n2. Recepcion\n3. Salir", "INICIO DE SESION", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "\n\n1. Administrador\n2. Recepcion\n\n3. Volver     4. Salir", "INICIO DE SESION", JOptionPane.INFORMATION_MESSAGE));
         switch (opcion) {
             case 1:
                 Login loginA = new Login();
@@ -46,6 +46,10 @@ public class Vista extends Persona {
                 loginO.sesionOperador();
                 break;
             case 3:
+
+                menu1();
+                break;
+                case 4:
 
                 System.exit(0);
                 break;
@@ -59,11 +63,10 @@ public class Vista extends Persona {
     public void registrar() {
         //JTextfield
         CuentaDeUsuario registro = new CuentaDeUsuario();
-        registro.crearCuenta();
     }
 
     public void menuAdmin() {
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "1. Gestion Operadores  \n2. Gestion Barberos\n3. Salir", "ADMINISTRADOR", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "1. Gestion Operadores  \n2. Gestion Barberos\n\n3. Volver     4. Salir", "ADMINISTRADOR", JOptionPane.INFORMATION_MESSAGE));
         switch (opcion) {
             case 1:
                 gestionOperadores();
@@ -72,8 +75,12 @@ public class Vista extends Persona {
                 gestionBarberos();
                 break;
             case 3:
+
+                iniciarSesion();
+                break;
+                case 4:
+
                 menuSalida();
-                System.exit(0);
                 break;
             default:
                 JOptionPane.showMessageDialog(ventana, "OPCION INCORRECTA", " ", JOptionPane.ERROR_MESSAGE);
@@ -82,7 +89,7 @@ public class Vista extends Persona {
     }
 
     public void menuOperadores() {
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "1. Gestion Barberos  \n2. Gestion Clientes\n3. Gestion de Citas\n4. Salir", "OPERADOR", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "1. Gestion Barberos  \n2. Gestion Clientes\n3. Gestion de Citas\n\n4. Volver     5. Salir", "OPERADOR", JOptionPane.INFORMATION_MESSAGE));
         switch (opcion) {
             case 1:
                 gestionBarberos();
@@ -95,8 +102,11 @@ public class Vista extends Persona {
 
                 break;
             case 4:
+                iniciarSesion();
+
+                break;
+                case 5:
                 menuSalida();
-                System.exit(0);
 
                 break;
 
@@ -124,12 +134,15 @@ public class Vista extends Persona {
     }
 
     public void gestionBarberos() {
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Barbero  \n2. Editar Barbero\n3. Eliminar Barbero\n4. Salir", "BARBEROS", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Barbero  \n2. Editar Barbero\n3. Eliminar Barbero\n\n4. Volver     5. Salir", "BARBEROS", JOptionPane.INFORMATION_MESSAGE));
         Barbero barbero = new Barbero();
         switch (opcion) {
             case 1:
-
+               
                 barbero.crearBarbero();
+                
+                
+                
                 break;
             case 2:
                 barbero.crearBarbero();
@@ -138,8 +151,10 @@ public class Vista extends Persona {
                 barbero.crearBarbero();
                 break;
             case 4:
+                menuOperadores();
+                break;
+                 case 5:
                 menuSalida();
-                System.exit(0);
                 break;
 
             default:
@@ -149,7 +164,7 @@ public class Vista extends Persona {
     }
 
     public void gestionOperadores() {
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Operador  \n2. Editar Operador\n3. Eliminar Operador\n4. Salir", "OPERADORES", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Operador  \n2. Editar Operador\n3. Eliminar Operador\n\n4. Volver     5. Salir", "OPERADORES", JOptionPane.INFORMATION_MESSAGE));
         Operador operador = new Operador();
         switch (opcion) {
             case 1:
@@ -165,8 +180,10 @@ public class Vista extends Persona {
                 operador.borrarOperador();
                 break;
             case 4:
+                menuAdmin();
+                break;
+                 case 5:
                 menuSalida();
-                System.exit(0);
                 break;
 
             default:
@@ -177,7 +194,7 @@ public class Vista extends Persona {
     }
 
     public void gestionClientes() {
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Cliente  \n2. Editar Cliente\n3. Eliminar Cliente\n4. Salir", "CLIENTES", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Cliente  \n2. Editar Cliente\n3. Eliminar Cliente\n\n4. Volver     5. Salir", "CLIENTES", JOptionPane.INFORMATION_MESSAGE));
         Cliente cliente = new Cliente();
         switch (opcion) {
             case 1:
@@ -193,8 +210,10 @@ public class Vista extends Persona {
                 cliente.borrarCliente();
                 break;
             case 4:
+                menuOperadores();
+                break;
+                case 5:
                 menuSalida();
-                System.exit(0);
                 break;
 
             default:
@@ -204,7 +223,7 @@ public class Vista extends Persona {
     }
 
     public void gestionCitas() {
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Cita \n2. Editar Cita\n3. Eliminar Cita\n4. Salir", "CITAS", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, " 1. Crear Cita \n2. Editar Cita\n3. Eliminar Cita\n\n4. Volver     5. Salir", "CITAS", JOptionPane.INFORMATION_MESSAGE));
         Citas cita = new Citas();
         switch (opcion) {
             case 1:
@@ -217,8 +236,11 @@ public class Vista extends Persona {
                 cita.borrarCita();
                 break;
             case 4:
-                menuSalida();
+                menuOperadores();
                 System.exit(0);
+                break;
+                case 5:
+                    menuSalida();
                 break;
 
             default:
