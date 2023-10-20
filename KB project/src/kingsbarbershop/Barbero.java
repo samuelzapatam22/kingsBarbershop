@@ -35,13 +35,15 @@ public class Barbero extends Persona implements Serializable {
 
     public void crearBarbero() {
         Barbero barbero = new Barbero();
-       
+       GestionDatos crud3 = new GestionDatos();
         
         barbero.setNombre(JOptionPane.showInputDialog("Nombre de Barbero: ").toLowerCase());
         barbero.setId(Long.parseLong(JOptionPane.showInputDialog("Identificacion de Barbero: ")));
         barbero.setTelefono(JOptionPane.showInputDialog("Telefono de Barbero: "));
         crud.ingresarPersona(barbero);
+        crud3.leerPersona("Barberos.txt");
         menu.gestionBarberos();
+        
         
 
     }
