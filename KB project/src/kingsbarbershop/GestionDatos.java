@@ -17,95 +17,74 @@ public class GestionDatos {
     public GestionDatos() {
     }
 
-    public void ingresarPersona(Persona obj) {
-        if (obj instanceof Administrador) {
-            try {
-                archivo = new File("Administrador.txt");
-                List<Persona> listaAdministrador = new ArrayList<>();
-                if (archivo.exists()) {
-                    listaAdministrador.add(obj);
-                    FileOutputStream archivoOut = new FileOutputStream(archivo, true);
-                    MyObjectOutputStream out1 = new MyObjectOutputStream(archivoOut);
-                    out1.writeObject(listaAdministrador);
-                    archivoOut.close();
-                    out1.close();
-                } else {
-                    listaAdministrador.add(obj);
-                    FileOutputStream archivoOut1 = new FileOutputStream(archivo, true);
-                    ObjectOutputStream out = new ObjectOutputStream(archivoOut1);
-                    out.writeObject(listaAdministrador);
-                    archivoOut1.close();
-                    out.close();
+    public void ingresarAdmin(Administrador obj) {
 
-                }
-            } catch (Exception e) {
+        try {
+            archivo = new File("Administrador.txt");
+            if (archivo.exists()) {
+                System.out.println("Ya existe");
+            } else {
+                FileOutputStream archivoOut = new FileOutputStream(archivo);
+                ObjectOutputStream out = new ObjectOutputStream(archivoOut);
+                out.writeObject(obj);
+                archivoOut.close();
+                out.close();
+
             }
-        }
-        if (obj instanceof Barbero) {
-
-            try {
-                archivo = new File("Barberos.txt");
-                if (archivo.exists()) {
-                    FileOutputStream archivoOut = new FileOutputStream(archivo, true);
-                    MyObjectOutputStream out1 = new MyObjectOutputStream(archivoOut);
-                    out1.writeObject(obj);
-                    archivoOut.close();
-                    out1.close();
-                } else {
-                    FileOutputStream archivoOut1 = new FileOutputStream(archivo, true);
-                    ObjectOutputStream out = new ObjectOutputStream(archivoOut1);
-                    out.writeObject(obj);
-                    archivoOut1.close();
-                    out.close();
-
-                }
-            } catch (Exception e) {
-            }
-        }
-        if (obj instanceof Cliente) {
-            try {
-                archivo = new File("Clientes.txt");
-                if (archivo.exists()) {
-                    FileOutputStream archivoOut = new FileOutputStream(archivo, true);
-                    MyObjectOutputStream out1 = new MyObjectOutputStream(archivoOut);
-                    out1.writeObject(obj);
-                    archivoOut.close();
-                    out1.close();
-                } else {
-                    FileOutputStream archivoOut1 = new FileOutputStream(archivo, true);
-                    ObjectOutputStream out = new ObjectOutputStream(archivoOut1);
-                    out.writeObject(obj);
-                    archivoOut1.close();
-                    out.close();
-
-                }
-            } catch (Exception e) {
-            }
-
+        } catch (Exception e) {
         }
     }
 
-    public void leerAdmin() {
+    public void ingresarPersona(Persona obj, String nombreArchivo) {
+
         try {
-            List<Persona> listaAdmins = new ArrayList<>();
+            archivo = new File(nombreArchivo);
 
-            Administrador Admin1 = new Administrador();
+            if (archivo.exists()) {
+                MyObjectOutputStream out;
+                try (FileOutputStream archivoSalida = new FileOutputStream(archivo, true)) {
+                    out = new MyObjectOutputStream(archivoSalida);
+                    out.writeObject(obj);
+                }
+                out.close();
+                JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO!!");
+            } else {
+                FileOutputStream archivoSalida1 = new FileOutputStream(archivo, true);
+                ObjectOutputStream out1 = new ObjectOutputStream(archivoSalida1);
+                out1.writeObject(obj);
+                JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO!!");
+                archivoSalida1.close();
+                out1.close();
+                
+            }
+        } catch (Exception e) {
+        }
 
-            FileInputStream archivoIn = new FileInputStream("Administrador.txt");
+    }
+
+    public void leerPersona(String nombreArchivo)  {
+
+        List<Persona> listaPersona = new ArrayList<>();
+         Persona persona1= new Persona();
+        try {
+            FileInputStream archivoIn = new FileInputStream(nombreArchivo);
             ObjectInputStream in = new ObjectInputStream(archivoIn);
+            System.out.println("vamos bien");
             while (true) {
                 try {
-                    Admin1 = (Administrador) in.readObject();
-                    System.out.println();
-                    listaAdmins.add(Admin1);
+                    System.out.println("entrooooo");
+                    persona1 =(Persona) in.readObject();
+                    listaPersona.add(persona1);
+                    System.out.println("leyo");
+
                 } catch (EOFException e) {
                     break;
                 }
             }
             archivoIn.close();
             in.close();
-            for (Persona admin : listaAdmins) {
-                JOptionPane.showMessageDialog(null, "Nombre: " + admin.getNombre() + "\nId: " + admin.getId() + "\nTelefono: " + admin.getTelefono());
+            for (Persona person : listaPersona) {
+                JOptionPane.showMessageDialog(null, "Nombre: " + person.getNombre() + "\nId: " + person.getId() + "\nTelefono: " + person.getTelefono());
             }
 
         } catch (Exception ex) {
@@ -114,59 +93,4 @@ public class GestionDatos {
 
     }
 
-    public void leerPersona(String nombreArchivo) {
-        if (nombreArchivo == "Barberos.txt") {
-            try {
-                List<Persona> listaBarberos = new ArrayList<>();
-
-                Barbero barber1 = new Barbero();
-
-                FileInputStream archivoIn = new FileInputStream("Barberos.txt");
-                ObjectInputStream in = new ObjectInputStream(archivoIn);
-                while (true) {
-                    try {
-                        barber1 = (Barbero) in.readObject();
-                        System.out.println();
-                        listaBarberos.add(barber1);
-                    } catch (EOFException e) {
-                        break;
-                    }
-                }
-                archivoIn.close();
-                in.close();
-                for (Persona barber : listaBarberos) {
-                    JOptionPane.showMessageDialog(null, "Nombre: " + barber.getNombre() + "\nId: " + barber.getId() + "\nTelefono: " + barber.getTelefono());
-                }
-
-            } catch (Exception ex) {
-                ex.printStackTrace(System.out);
-            }
-        } else {
-            try {
-                List<Persona> listaClientes = new ArrayList<>();
-
-                Cliente cliente = new Cliente();
-
-                FileInputStream archivoIn = new FileInputStream("Clientes.txt");
-                ObjectInputStream in = new ObjectInputStream(archivoIn);
-                while (true) {
-                    try {
-                       cliente = (Cliente) in.readObject();
-                        System.out.println();
-                        listaClientes.add(cliente);
-                    } catch (EOFException e) {
-                        break;
-                    }
-                }
-                archivoIn.close();
-                in.close();
-                for (Persona admin : listaClientes) {
-                    JOptionPane.showMessageDialog(null, "Nombre: " + cliente.getNombre() + "\nId: " + cliente.getId() + "\nTelefono: " + cliente.getTelefono());
-                }
-
-            } catch (Exception ex) {
-                ex.printStackTrace(System.out);
-            }
-        }
-    }
 }

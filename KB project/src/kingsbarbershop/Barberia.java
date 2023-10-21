@@ -1,17 +1,17 @@
-
 package kingsbarbershop;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public class Barberia {
-     private String nombre,telefono;
+public class Barberia implements Serializable {
+
+    private static final long serialVersionUID = 1L; //version de serializacion 
+    private String nombre, telefono;
     private long id;
     BigInteger tel;
-
+    
     public Barberia() {
     }
-
-    
 
     public String getNombre() {
         return nombre;
@@ -37,5 +37,5 @@ public class Barberia {
         this.telefono = telefono;
         tel = new BigInteger(telefono);
     }
-    
+
 }

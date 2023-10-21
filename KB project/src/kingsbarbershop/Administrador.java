@@ -21,7 +21,13 @@ public class Administrador extends Persona implements Serializable {
     user.setNombre("codigoc13");
     user.setId(1013457214);
     user.setTelefono("3128906454");
-    crud.ingresarPersona(user);
+    crud.ingresarAdmin(user);
+    try{
+            crud.leerPersona("Administrador.txt");
+
+    }catch(Exception e){
+        
+    }
     
     }
 }

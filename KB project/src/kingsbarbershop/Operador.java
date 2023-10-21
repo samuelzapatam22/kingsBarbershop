@@ -28,7 +28,7 @@ public class Operador extends Persona implements Serializable {
         operador.setId(Long.parseLong(JOptionPane.showInputDialog("Identificacion de Operador: ")));
         operador.setTelefono(JOptionPane.showInputDialog("Telefono de Operador: "));
         operador.setUsuario(JOptionPane.showInputDialog("Usuario nuevo : ").toLowerCase());
-        crud.ingresarPersona(operador);
+        crud.ingresarPersona(operador,"Operadores.txt");
         menu.gestionOperadores();
         
     }

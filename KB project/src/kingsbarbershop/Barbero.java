@@ -9,7 +9,7 @@ public class Barbero extends Persona implements Serializable {
 
     //Atributos
     private String horario;
-    GestionDatos crud = new GestionDatos();
+    GestionDatos crud1 = new GestionDatos();
     Vista menu = new Vista();
     // Constructores
     public Barbero() {
@@ -35,13 +35,16 @@ public class Barbero extends Persona implements Serializable {
 
     public void crearBarbero() {
         Barbero barbero = new Barbero();
-       GestionDatos crud3 = new GestionDatos();
         
         barbero.setNombre(JOptionPane.showInputDialog("Nombre de Barbero: ").toLowerCase());
         barbero.setId(Long.parseLong(JOptionPane.showInputDialog("Identificacion de Barbero: ")));
         barbero.setTelefono(JOptionPane.showInputDialog("Telefono de Barbero: "));
-        crud.ingresarPersona(barbero);
-        crud3.leerPersona("Barberos.txt");
+        crud1.ingresarPersona(barbero,"Barberos.txt");
+        try{
+        crud1.leerPersona("Barberos.txt");
+        }catch(Exception e){
+            
+        }
         menu.gestionBarberos();
         
         

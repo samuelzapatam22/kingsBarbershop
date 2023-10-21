@@ -1,4 +1,3 @@
-
 package kingsbarbershop;
 
 import java.util.HashMap;
@@ -11,28 +10,33 @@ public class Login extends CuentaDeUsuario {
     public Login(String usuario, Long contraseña) {
         super(usuario, contraseña);
     }
-    public void sesionAdmin(){
+
+    public void sesionAdmin() {
         //si no encuentra sesion admin vuelve al menu 1
         GestionDatos crud1 = new GestionDatos();
-        crud1.leerAdmin();
-        
+        try {
+            crud1.leerPersona("Administrador.txt");
+
+        } catch (Exception e) {
+
+        }
+
         // al encontrarlo va a el menu admin
-       // Vista login = new Vista();
+        // Vista login = new Vista();
         //login.menuAdmin();
     }
-    public void sesionOperador(){
+
+    public void sesionOperador() {
         // si no encuentra operador muestra que debe ser registrado por el admin y vuelve al menu 1
         // al encontrarlo va a el menu operador
         Vista login = new Vista();
         login.menuOperadores();
     }
-    public void validarUsuario(Persona obj){
-            HashMap<Integer,String> mapaCuentas = new HashMap<>();
-            int i = 0;
-           mapaCuentas.put( i++, obj.getNombre());
+
+    public void validarUsuario(Persona obj) {
+        HashMap<Integer, String> mapaCuentas = new HashMap<>();
+        int i = 0;
+        mapaCuentas.put(i++, obj.getNombre());
     }
-    
-    
-    
-            
+
 }

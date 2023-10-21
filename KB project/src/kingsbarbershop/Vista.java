@@ -35,7 +35,7 @@ public class Vista extends Persona {
 
     public void iniciarSesion() {
 
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "\n\n1. Administrador\n2. Recepcion\n\n3. Volver     4. Salir", "INICIO DE SESION", JOptionPane.INFORMATION_MESSAGE));
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(ventana, "\n\n1. Administrador\n2. Operador\n\n3. Volver     4. Salir", "INICIO DE SESION", JOptionPane.INFORMATION_MESSAGE));
         switch (opcion) {
             case 1:
                 Login loginA = new Login();
